@@ -173,31 +173,31 @@ public class FeedDataContentProvider extends ContentProvider {
             case URI_GROUPS:
             case URI_FEEDS_FOR_GROUPS:
             case URI_FEEDS:
-                return "vnd.android.cursor.dir/vnd.flym.feed";
+                return "vnd.android.cursor.dir/vnd.burramys.feed";
             case URI_GROUP:
             case URI_FEED:
-                return "vnd.android.cursor.item/vnd.flym.feed";
+                return "vnd.android.cursor.item/vnd.burramys.feed";
             case URI_FILTERS:
             case URI_FILTERS_FOR_FEED:
-                return "vnd.android.cursor.dir/vnd.flym.filter";
+                return "vnd.android.cursor.dir/vnd.burramys.filter";
             case URI_FAVORITES:
             case URI_UNREAD_ENTRIES:
             case URI_ENTRIES:
             case URI_ENTRIES_FOR_FEED:
             case URI_ENTRIES_FOR_GROUP:
             case URI_SEARCH:
-                return "vnd.android.cursor.dir/vnd.flym.entry";
+                return "vnd.android.cursor.dir/vnd.burramys.entry";
             case URI_FAVORITES_ENTRY:
             case URI_ENTRY:
             case URI_UNREAD_ENTRIES_ENTRY:
             case URI_ENTRY_FOR_FEED:
             case URI_ENTRY_FOR_GROUP:
             case URI_SEARCH_ENTRY:
-                return "vnd.android.cursor.item/vnd.flym.entry";
+                return "vnd.android.cursor.item/vnd.burramys.entry";
             case URI_TASKS:
-                return "vnd.android.cursor.dir/vnd.flym.task";
+                return "vnd.android.cursor.dir/vnd.burramys.task";
             case URI_TASK:
-                return "vnd.android.cursor.item/vnd.flym.task";
+                return "vnd.android.cursor.item/vnd.burramys.task";
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }

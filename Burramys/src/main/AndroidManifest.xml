@@ -34,7 +34,7 @@
             android:name="com.viktorrudometkin.burramys.provider.FeedDataContentProvider"
             android:authorities="com.viktorrudometkin.burramys.provider.FeedData"
             android:exported="true"
-            android:writePermission="net.fred.feedex.provider.WRITE_PERMISSION"/>
+            android:writePermission="com.viktorrudometkin.burramys.provider.WRITE_PERMISSION"/>
 
         <activity
             android:name="com.viktorrudometkin.burramys.activity.HomeActivity"
@@ -65,7 +65,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/vnd.flym.entry"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.burramys.entry"/>
             </intent-filter>
         </activity>
         <activity
@@ -83,12 +83,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.EDIT"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/vnd.flym.feed"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.burramys.feed"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.INSERT"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.dir/vnd.flym.feed"/>
+                <data android:mimeType="vnd.android.cursor.dir/vnd.burramys.feed"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>
