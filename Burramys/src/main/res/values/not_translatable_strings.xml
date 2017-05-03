@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_us_copyright" translatable="false">Copyright 2013–2016 Frédéric Julian</string>
+    <string name="about_us_copyright" translatable="false">Copyright 2017 Viktor Rudometkin</string>
     <string name="about_us_content" translatable="false"><![CDATA[
-    <b>Community</b><br/>
-    • Ildar Mulyukov<br/><br/>
 
-    <b>Developers</b><br/>
+    <h4>License</h4>
+
+    This program is free software. Therefore, you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. See http://www.gnu.org/licenses
+
+    <h4>Burramys Contributors</h4>
+
+    <h5>Developers</h5>
+    • Viktor Rudometkin
+
+    <h4>Flym Contributors</h4>
+
+    This application is based on Flym (https://github.com/FredJul/Flym). Therefore, here are listed
+    people who contributed to Flym.
+
+    <h5>Community</h5>
+    • Ildar Mulyukov
+
+    <h5>Developers</h5>
     • eighthave<br/>
     • equiem<br/>
     • Frédéric Julian<br/>
@@ -18,7 +33,7 @@
     • Suyash Bhatt<br/>
     • Zhaofeng Li<br/><br/>
 
-    <b>Translators</b><br/>
+    <h5>Translators</h5>
     • Aitor Beriain<br/>
     • Benjamin Schütte<br/>
     • Changwoo Ryu<br/>
@@ -32,8 +47,14 @@
     • Mladen Pejaković<br/>
     • Zheng Juefei<br/><br/>
 
-    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. See http://www.gnu.org/licenses<br/><br/>
-    Some parts of this software are based on \'Sparse rss\', Copyright 2010-2012 Stefan Handschuch, under the MIT license.
+    <h4>Sparse rss</h4>
+
+        This application is also based on \'Sparse rss\' which was originally developed by Stefan Handschuch and distributed under the MIT license.
+
+    <h4>Application icon</h4>
+
+        The application icon is based on an icon from the Wasp Icons set originally created by Christian Schaller & Matthew McClintock.
+
     ]]></string>
 
     <string-array name="settings_interval_values" translatable="false">

@@ -50,7 +50,7 @@ import com.viktorrudometkin.burramys.fragment.EntriesListFragment;
 import com.viktorrudometkin.burramys.parser.OPML;
 import com.viktorrudometkin.burramys.provider.FeedData.EntryColumns;
 import com.viktorrudometkin.burramys.provider.FeedData.FeedColumns;
-import com.viktorrudometkin.burramys.service.AutoRefreshService;
+import com.viktorrudometkin.burramys.service.RefreshService;
 import com.viktorrudometkin.burramys.service.FetcherService;
 import com.viktorrudometkin.burramys.utils.PrefUtils;
 import com.viktorrudometkin.burramys.utils.UiUtils;
@@ -133,7 +133,12 @@ public class HomeActivity extends BaseActivity implements LoaderManager.LoaderCa
 
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
-        AutoRefreshService.initAutoRefresh(this);
+        if (PrefUtils.getBoolean(PrefUtils.REFRESH_ENABLED, true)) {
+            // starts the service independent to this activity
+            startService(new Intent(this, RefreshService.class));
+        } else {
+            stopService(new Intent(this, RefreshService.class));
+        }
 
         if (PrefUtils.getBoolean(PrefUtils.REFRESH_ON_OPEN_ENABLED, false)) {
             if (!PrefUtils.getBoolean(PrefUtils.IS_REFRESHING, false)) {
