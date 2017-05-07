@@ -59,7 +59,9 @@ import com.viktorrudometkin.burramys.Constants;
 import com.viktorrudometkin.burramys.utils.PrefUtils;
 
 public class RefreshService extends Service {
+
     public static final String SIXTY_MINUTES = "3600000";
+
     private final OnSharedPreferenceChangeListener mListener = new OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {

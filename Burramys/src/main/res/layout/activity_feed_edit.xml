@@ -74,6 +74,49 @@
                         android:hint="@string/optional"
                         android:singleLine="true"/>
 
+                    <TextView
+                        android:id="@+id/activity_feed_edit_user_name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/feed_title"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/user_name_label"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/activity_feed_edit_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/activity_feed_edit_user_name_label"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="1"/>
+
+                    <TextView
+                        android:id="@+id/activity_feed_edit_password_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/activity_feed_edit_user_name"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/activity_feed_edit_password_label"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/activity_feed_edit_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/activity_feed_edit_password_label"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:inputType="textPassword"
+                        android:maxLines="1"/>
+
                     <CheckBox
                         android:id="@+id/retrieve_fulltext"
                         android:layout_width="wrap_content"

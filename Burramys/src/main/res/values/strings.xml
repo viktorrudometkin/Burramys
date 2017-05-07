@@ -208,4 +208,9 @@
         <item>Always</item>
     </string-array>
 
+    <!-- activity_feed_edit.xml -->
+    <string name="user_name_label">User name</string>
+    <string name="activity_feed_edit_password_label">Password</string>
+
+
 </resources>

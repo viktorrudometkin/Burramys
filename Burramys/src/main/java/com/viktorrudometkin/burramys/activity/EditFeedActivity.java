@@ -93,11 +93,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EditFeedActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
     static final String FEED_SEARCH_TITLE = "title";
     static final String FEED_SEARCH_URL = "feedId";
     static final String FEED_SEARCH_DESC = "description";
+
     private static final String STATE_CURRENT_TAB = "STATE_CURRENT_TAB";
-    private static final String[] FEED_PROJECTION = new String[]{FeedColumns.NAME, FeedColumns.URL, FeedColumns.RETRIEVE_FULLTEXT, FeedColumns.IS_GROUP};
+    private static final String[] FEED_PROJECTION = new String[]{FeedColumns.NAME, FeedColumns.URL, FeedColumns.RETRIEVE_FULLTEXT, FeedColumns.IS_GROUP, FeedColumns.USER_NAME, FeedColumns.USER_PASSWORD};
+
     private final ActionMode.Callback mFilterActionModeCallback = new ActionMode.Callback() {
 
         // Called when the action mode is created; startActionMode() was called
@@ -213,10 +216,14 @@ public class EditFeedActivity extends BaseActivity implements LoaderManager.Load
             mFiltersListView.invalidateViews();
         }
     };
+
     private TabHost mTabHost;
     private EditText mNameEditText, mUrlEditText;
     private CheckBox mRetrieveFulltextCb;
     private ListView mFiltersListView;
+    private EditText mUserNameEditText;
+    private EditText mUserPasswordEditText;
+
     private FiltersCursorAdapter mFiltersCursorAdapter;
 
     @Override
@@ -234,29 +241,34 @@ public class EditFeedActivity extends BaseActivity implements LoaderManager.Load
 
         Intent intent = getIntent();
 
+        //Initialize views.
         mTabHost = (TabHost) findViewById(R.id.tabHost);
         mNameEditText = (EditText) findViewById(R.id.feed_title);
         mUrlEditText = (EditText) findViewById(R.id.feed_url);
         mRetrieveFulltextCb = (CheckBox) findViewById(R.id.retrieve_fulltext);
         mFiltersListView = (ListView) findViewById(android.R.id.list);
-        View tabWidget = findViewById(android.R.id.tabs);
+        mUserNameEditText = (EditText) findViewById(R.id.activity_feed_edit_user_name);
+        mUserPasswordEditText = (EditText) findViewById(R.id.activity_feed_edit_password);
 
+        //Setup tabs.
         mTabHost.setup();
         mTabHost.addTab(mTabHost.newTabSpec("feedTab").setIndicator(getString(R.string.tab_feed_title)).setContent(R.id.feed_tab));
         mTabHost.addTab(mTabHost.newTabSpec("filtersTab").setIndicator(getString(R.string.tab_filters_title)).setContent(R.id.filters_tab));
-
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String s) {
                 invalidateOptionsMenu();
             }
         });
-
         if (savedInstanceState != null) {
             mTabHost.setCurrentTab(savedInstanceState.getInt(STATE_CURRENT_TAB));
         }
 
+        View tabWidget = findViewById(android.R.id.tabs);
+
         if (intent.getAction().equals(Intent.ACTION_INSERT) || intent.getAction().equals(Intent.ACTION_SEND)) {
+            //TODO: Create a new feed or ?
+
             setTitle(R.string.new_feed_title);
 
             tabWidget.setVisibility(View.GONE);
@@ -265,11 +277,15 @@ public class EditFeedActivity extends BaseActivity implements LoaderManager.Load
                 mUrlEditText.setText(intent.getStringExtra(Intent.EXTRA_TEXT));
             }
         } else if (intent.getAction().equals(Intent.ACTION_VIEW)) {
+            //TODO: Where does it called from?
+
             setTitle(R.string.new_feed_title);
 
             tabWidget.setVisibility(View.GONE);
             mUrlEditText.setText(intent.getDataString());
         } else if (intent.getAction().equals(Intent.ACTION_EDIT)) {
+            //Edit feed.
+
             setTitle(R.string.edit_feed_title);
 
             mFiltersCursorAdapter = new FiltersCursorAdapter(this, Constants.EMPTY_CURSOR);
@@ -288,10 +304,11 @@ public class EditFeedActivity extends BaseActivity implements LoaderManager.Load
 
             if (savedInstanceState == null) {
                 Cursor cursor = getContentResolver().query(intent.getData(), FEED_PROJECTION, null, null, null);
-
                 if (cursor != null && cursor.moveToNext()) {
                     mNameEditText.setText(cursor.getString(0));
                     mUrlEditText.setText(cursor.getString(1));
+                    mUserNameEditText.setText(cursor.getString(4));
+                    mUserPasswordEditText.setText(cursor.getString(5));
                     mRetrieveFulltextCb.setChecked(cursor.getInt(2) == 1);
                     if (cursor.getInt(3) == 1) { // if it's a group, we cannot edit it
                         finish();
@@ -300,7 +317,6 @@ public class EditFeedActivity extends BaseActivity implements LoaderManager.Load
                     UiUtils.showMessage(EditFeedActivity.this, R.string.error);
                     finish();
                 }
-
                 if (cursor != null) {
                     cursor.close();
                 }
